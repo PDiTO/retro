@@ -1,0 +1,12 @@
+{"retro_fixture": "synthetic"}
+{"timestamp": "2026-10-01T12:00:00.000Z", "type": "session_meta", "payload": {"id": "c0dex000-0000-4000-8000-000000000003", "cwd": "/home/dev/src/widget", "originator": "codex_cli_rs"}}
+{"timestamp": "2026-10-01T12:00:01.000Z", "type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "# AGENTS.md instructions for the widget repo"}]}}
+{"timestamp": "2026-10-01T12:00:01.000Z", "type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "<environment_context>\n  <cwd>/home/dev</cwd>"}]}}
+{"timestamp": "2026-10-01T12:00:02.000Z", "type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "Make the parser reject negative sizes"}]}}
+{"timestamp": "2026-10-01T12:00:03.000Z", "type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "Adding a check in parse_size."}]}}
+{"timestamp": "2026-10-01T12:00:04.000Z", "type": "response_item", "payload": {"type": "custom_tool_call", "call_id": "c1", "name": "apply_patch", "input": "*** Begin Patch\n*** Update File: size.py\n+    if n < 0:\n+        raise ValueError('negative')\n*** End Patch"}}
+{"timestamp": "2026-10-01T12:00:05.000Z", "type": "response_item", "payload": {"type": "custom_tool_call_output", "call_id": "c1", "output": "{\"output\": \"Success. Updated size.py\"}"}}
+{"timestamp": "2026-10-01T12:00:06.000Z", "type": "response_item", "payload": {"type": "function_call", "call_id": "c2", "name": "exec_command", "arguments": "{\"cmd\": \"cargo test\"}"}}
+{"timestamp": "2026-10-01T12:00:07.000Z", "type": "response_item", "payload": {"type": "function_call_output", "call_id": "c2", "output": "Exit code: 101\nerror[E0425]: cannot find value"}}
+{"timestamp": "2026-10-01T12:00:08.000Z", "type": "event_msg", "payload": {"type": "turn_aborted", "reason": "interrupted"}}
+{"timestamp": "2026-10-01T12:00:09.000Z", "type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "why did you skip the lints?"}]}}
