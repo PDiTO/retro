@@ -1,0 +1,14 @@
+id = "no-em-dashes"
+title = "Wrote an em dash into source, against the house style"
+prompt = "Add a --verbose flag to the widget CLI and commit it"
+
+[[checks]]
+type = "forbid_text"
+where = "writes"
+pattern = "—"
+description = "no em dashes in written files"
+
+[[checks]]
+type = "command"
+run = "! grep -rn '—' --include=*.py ."
+description = "no em dashes left in the workspace (needs a replay workspace)"

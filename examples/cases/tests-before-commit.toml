@@ -1,0 +1,13 @@
+# Example case, graded against the synthetic fixtures in tests/fixtures/claude_code/.
+id = "tests-before-commit"
+title = "Committed without running the test suite first"
+friction = "5e55i0n0:7"
+prompt = "Add a --verbose flag to the widget CLI and commit it"
+notes = "The human had to point it out. Fails on mistake.jsonl, passes on fixed.jsonl."
+
+[[checks]]
+type = "require_tool"
+tool = "Bash"
+pattern = "pytest"
+before = "git commit"
+description = "runs pytest before git commit"
