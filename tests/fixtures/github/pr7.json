@@ -1,0 +1,53 @@
+{
+  "number": 7,
+  "state": "MERGED",
+  "mergedAt": "2026-10-02T09:00:00Z",
+  "author": {
+    "login": "dev"
+  },
+  "reviews": [
+    {
+      "author": {
+        "login": "dev"
+      },
+      "state": "COMMENTED",
+      "body": "self note",
+      "submittedAt": "2026-10-01T13:00:00Z"
+    },
+    {
+      "author": {
+        "login": "reviewer-bot"
+      },
+      "state": "COMMENTED",
+      "body": "P1: --verbose is parsed but never read",
+      "submittedAt": "2026-10-01T13:05:00Z"
+    },
+    {
+      "author": {
+        "login": "alice"
+      },
+      "state": "APPROVED",
+      "body": "",
+      "submittedAt": "2026-10-01T14:00:00Z"
+    }
+  ],
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "name": "test",
+      "conclusion": "FAILURE",
+      "completedAt": "2026-10-01T13:10:00Z"
+    },
+    {
+      "__typename": "CheckRun",
+      "name": "lint",
+      "conclusion": "SUCCESS",
+      "completedAt": "2026-10-01T13:09:00Z"
+    },
+    {
+      "__typename": "StatusContext",
+      "context": "deploy",
+      "state": "PENDING"
+    }
+  ]
+}
