@@ -1,0 +1,37 @@
+# retro reads private agent transcripts. None of that belongs in this repo.
+# Real data lives in $RETRO_HOME (default ~/.local/share/retro), outside any checkout.
+# Only hand-written synthetic fixtures under tests/fixtures/ are committed, and
+# `retro audit` in CI fails the build if anything transcript-shaped slips in.
+*.jsonl
+!tests/fixtures/**/*.jsonl
+.retro/
+retro-data/
+cases.local/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Environments
+.venv/
+.env
+.env.*
+
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
