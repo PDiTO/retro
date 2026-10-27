@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo.png" alt="retro logo" width="220">
+</p>
+
 # retro
 
 retro reads the session logs your coding agents leave on disk and finds the places where they got it wrong. It reads Claude Code, Codex, Cursor and OpenCode. The agent CLIs you already have installed then label those mistakes, group them into recurring patterns and propose edits to the skills and CLAUDE.md/AGENTS.md files that should have prevented them.
