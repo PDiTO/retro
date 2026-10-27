@@ -2,7 +2,8 @@
 
 Every adapter is registered as a `Source`. `iter_sessions` yields parsed sessions from a
 root directory, newest first, and `load` re-opens one session from the reference stored
-in `Session.path`. For one-file-per-session formats the reference is the file path.
+in `Session.path`. For one-file-per-session formats the reference is the file path. For
+formats that keep many sessions in one database it is `<db path>#<session id>`.
 """
 
 from __future__ import annotations
@@ -14,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 
 from retro.model import Session
-from retro.sources import claude_code, codex
+from retro.sources import claude_code, codex, cursor, opencode
 
 
 @dataclass(frozen=True)
@@ -48,6 +49,8 @@ SOURCES: list[Source] = [
         _files(codex.find_sessions, codex.parse_session),
         codex.parse_session,
     ),
+    Source("cursor", cursor.DEFAULT_ROOT, cursor.iter_sessions, cursor.parse_session),
+    Source("opencode", opencode.DEFAULT_ROOT, opencode.iter_sessions, opencode.parse_session),
 ]
 
 
@@ -58,6 +61,10 @@ def detected_sources() -> list[Source]:
 
 def load_session(path: Path) -> Session:
     """Re-open a session from its reference, telling the formats apart by shape."""
+    if "#" in path.name:
+        return opencode.parse_session(path)
+    if path.name == "store.db":
+        return cursor.parse_session(path)
     with path.open(encoding="utf-8") as f:
         for line in f:
             try:
@@ -76,6 +83,8 @@ __all__ = [
     "Source",
     "claude_code",
     "codex",
+    "cursor",
     "detected_sources",
     "load_session",
+    "opencode",
 ]
